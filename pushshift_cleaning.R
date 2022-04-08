@@ -23,7 +23,7 @@ head(data)
 data_under_1000 = data %>% filter(data$num_comments < 1000)
 data_over_1000 =  data %>% filter(data$num_comments > 1000)
 
-hist(data_under_1000$num_comments , breaks = 5)
+hist(data_under_1000$num_comments , breaks = 10)
 sum(data_under_1000$num_comments)
 
 ggplot(data = data_under_1000, mapping = aes(x = created_utc, y = num_comments, col = score)) + 
