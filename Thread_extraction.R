@@ -41,7 +41,7 @@ for (i in 1:n) { # gehe durch alle threads
                    finally ={setTxtProgressBar(pb, i)})
 }
 close(pb)
-
+#analyse knapp 1,5 Stunde gedauert
 
 ggplot(data = gme_tibble_mean[1:n,])+ 
   geom_point(mapping = aes(x = Date, y = mean, col = Count_of_Comments), show.legend = TRUE)+
