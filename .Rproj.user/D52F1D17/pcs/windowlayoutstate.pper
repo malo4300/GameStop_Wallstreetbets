@@ -1,27 +1,14 @@
 {
     "left": {
-<<<<<<< HEAD
-        "splitterpos": 301,
+        "splitterpos": 102,
         "topwindowstate": "NORMAL",
-        "panelheight": 875,
-        "windowheight": 914
+        "panelheight": 346,
+        "windowheight": 384
     },
     "right": {
-        "splitterpos": 390,
+        "splitterpos": 136,
         "topwindowstate": "NORMAL",
-        "panelheight": 875,
-        "windowheight": 914
-=======
-        "splitterpos": 139,
-        "topwindowstate": "NORMAL",
-        "panelheight": 396,
-        "windowheight": 435
-    },
-    "right": {
-        "splitterpos": 176,
-        "topwindowstate": "NORMAL",
-        "panelheight": 396,
-        "windowheight": 435
->>>>>>> be6a703d9ea0f75eebd914c2d90e5f710b76f9b9
+        "panelheight": 346,
+        "windowheight": 384
     }
 }

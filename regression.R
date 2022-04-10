@@ -6,7 +6,7 @@ library(tidyverse)
 
 
 gme_sap = read_csv(file = "Stock_Data.csv")
-sentiment = read_csv(file = "sentiment_frame.csv")
+sentiment = read_csv(file = "sentiment_frame_no_lag.csv")
 sentiment = sentiment %>% select(-Date)
 sentiment = sentiment[,-1]
 
@@ -21,6 +21,6 @@ lm_reg = lm(formula = gme_change~mean +sum_com + mean*sum_com, data = full_data)
 lm_reg_controlls = lm(formula = gme_change~mean +sum_com + mean*sum_com + sp_change  +lag(sp_change,1) + lag(sp_change, 2) + lag(sp_change, 3), 
             data = full_data)
 
-summary(lm_reg)
+summary(lm_reg_controlls)
 
 ggplot(data = full_data) + geom_point(mapping = aes(x=mean, y = gme_change))
