@@ -51,11 +51,15 @@ ggplot(data = gme_tibble_mean[1:n,])+
 gme_tibble_mean = na.omit(gme_tibble_mean)
 gme_date_discrete = select(gme_tibble_mean, - "URL") %>% group_by(Date) %>% summarise(mean = weighted.mean(x = mean, w = Count_of_Comments ), sum_com = sum(Count_of_Comments))
 #save data
+write.csv(gme_tibble_mean, file = "gme_tibble_mean.csv")
 write.csv(gme_date_discrete, file = "gme_date_discrete.csv")
 
 #plot
+gme_date_discrete = read_csv("gme_date_discrete.csv")
 ggplot(data = filter(gme_date_discrete))+  #, Date > "2022-02-05")
   geom_point(mapping = aes(x = Date, y = mean, col = sum_com), show.legend = TRUE)+
   scale_color_gradient(low="red", high="green") +
-  geom_hline(yintercept = 0) 
+  geom_hline(yintercept = 0) +
+  labs(title = "Game Stop Sentiment im Subreddit WallstreetBets im Jahr 2021\n", x = "Datum", y = "Durchschnittliches Sentiment", color = "Anzahl Kommentare") +
+  theme(plot.title = element_text(size = 15, face = "bold", color = "darkgrey"))
 gme_date_discrete

@@ -18,14 +18,12 @@ dim(data)
 Anzahl_Kommentare = sum(data$num_comments)
 write.csv(data, "pushshift_clean.csv")
 ### cleaning hier fertig, aber anzahl der kommentare müssen reduziert werden
-head(data)
 
-data_under_1000 = data %>% filter(data$num_comments < 1000)
-data_over_1000 =  data %>% filter(data$num_comments > 1000)
-
-hist(data_under_1000$num_comments , breaks = 10)
+ggplot(data = data) + 
+  geom_histogram(mapping = aes(x = num_comments), bins = 10,color="black", fill="white") + 
+  labs(x = "Anzahl Kommentare", y = "Anzahl", title = "Anzahl Kommentare")
 sum(data_under_1000$num_comments)
 
-ggplot(data = data_under_1000, mapping = aes(x = created_utc, y = num_comments, col = score)) + 
+ggplot(data = data, mapping = aes(x = created_utc, y = num_comments, col = score)) + 
   geom_point(size = 1) +
   scale_color_gradient(low = "red", high ="blue")
