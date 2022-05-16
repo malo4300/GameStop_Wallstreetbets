@@ -1,6 +1,6 @@
 ---
 title: "Predicting the stock price of GameStop using r/wallstreetbets"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
