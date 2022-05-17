@@ -1,6 +1,6 @@
 library(tidyverse)
 
-sentiment_frame = read_csv("gme_date_discrete.csv")
+sentiment_frame = read_csv("Data/gme_date_discrete.csv")
 
 sentiment_frame = sentiment_frame[,-1]
 
@@ -17,4 +17,4 @@ sentiment_frame = sentiment_frame %>% mutate(week_day_add = week_day_add)
 
 sentiment_frame = sentiment_frame %>% mutate(day_to_pred = Date + week_day_add)
 
-write.csv(sentiment_frame, "sentiment_frame_no_lag.csv")
+write.csv(sentiment_frame, "Data/sentiment_frame_no_lag.csv")

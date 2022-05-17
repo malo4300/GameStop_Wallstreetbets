@@ -5,8 +5,8 @@ library(tidyverse)
 #---- group all data
 
 
-gme_sap = read_csv(file = "Stock_Data.csv")
-sentiment = read_csv(file = "sentiment_frame_no_lag.csv")
+gme_sap = read_csv(file = "Data/Stock_Data.csv")
+sentiment = read_csv(file = "Data/sentiment_frame_no_lag.csv")
 sentiment = sentiment %>% select(-Date)
 sentiment = sentiment[,-1]
 

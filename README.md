@@ -17,7 +17,7 @@ GameStop.
 
 You can also embed plots, for example:
 
-![](datum~sentiment.jpeg)<!-- -->
+![](figures/datum~sentiment.jpeg)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.

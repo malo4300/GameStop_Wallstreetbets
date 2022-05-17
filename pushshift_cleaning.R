@@ -1,6 +1,6 @@
 library(tidyverse)
 
-data = read_csv("pushshift.csv")
+data = read_csv("Data/pushshift.csv")
 
 data$created_utc = as.Date(as.POSIXct(data$created_utc, origin="1970-01-01"))
 
@@ -16,7 +16,7 @@ data = data %>% filter(data$num_comments > 2) ##weniger als 3 Kommentare entwede
 
 dim(data)
 Anzahl_Kommentare = sum(data$num_comments)
-write.csv(data, "pushshift_clean.csv")
+write.csv(data, "Data/pushshift_clean.csv")
 ### cleaning hier fertig, aber anzahl der kommentare müssen reduziert werden
 
 ggplot(data = data) + 
