@@ -4,19 +4,13 @@ output: rmarkdown::github_document
 bibliography: references.bib  
 ---
 
-```{r setup, include=FALSE}
-library(tidyverse)
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Looking back to spring 2021
 
 In the beginning of 2021 GameStop was an almost bankrupt company. Then something strange happend on the subreddit r/wallstreetbets. This subredit known for the "risk seeking" gamblers collectively decided to pump up the GameStop price to 420,69\$. In addition to a potential big gain for the gamblers and a funny meme the redditors also wanted to challenge Wallstreet which had a large amount of short positions on GameStop. In the aftermath, large Hedgfonds lost [billions of dollars](https://www.cnbc.com/2021/01/29/gamestop-short-sellers-are-still-not-surrendering-despite-nearly-20-billion-in-losses-this-year.html).
 
-```{r picture of GameStop Stock, echo=FALSE}
-ggplot(data = read.csv(file = "Data/GME_2021.csv")) + geom_line(mapping = aes(x=as.Date(Date), y =Close)) + labs(x= "Date" , y = "Closing of GME", title = "Stock price of GameStop in 2021")
-
-```
+![](README_files/figure-gfm/picture of GameStop Stock-1.png)<!-- -->
 
 ## What i tried to achieve
 
