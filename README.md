@@ -31,7 +31,17 @@ challenge. Despite the public accessible website the usage of a
 web-scrapper was not an option. Reddit limits the amount of comments an
 automated tool like *RedditExtractoR* (Rivera 2022) can return from
 Reddit. After trying out a few option i switched from R to Python an
-used the PRAW package xxxx cite
+used the [PRAW package](https://praw.readthedocs.io/en/stable/) project.
+With the assistants of this project one can make request to the Reddit
+API. Unfortunately requests are to some degree still limited and returns
+fail if to many posts are being requested. I tried to avoid this problem
+by looping through the days of 2021 with timestamps ans limiting the
+amount of posts which the api should return. Consequently i was not able
+to scrap **ALL** posts from r/wallstreetbets. This disappointed me at
+first but if i was able to gather all posts, i would have had a bigger
+problem latter in the analysis. As it turns other, the number of
+comments to analyse could reach up into the millions, way to much to
+analyse with my hardware.
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 

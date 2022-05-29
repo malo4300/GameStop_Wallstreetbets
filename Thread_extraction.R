@@ -5,8 +5,8 @@ library(RedditExtractoR)
 
 
 ##### Find Threads von python ----------
-threads = read.csv("Data/pushshift.csv")
-#write.csv(x = thread_url, file = "thread_day.csv", sep = ";")
+threads = read.csv("Data/pushshift_clean_first_quarter.csv")
+
 
 n = nrow(threads)
 
@@ -21,7 +21,9 @@ gme_tibble_mean = tibble(Date = threads$created_utc,
 ##### analyse thread -----------
 summarize_thread = function(content_array){
   anzahl_comments = nrow(content_array$comments)
+  #create variable to store sentiment per comment
   sentiment = rep(0,anzahl_comments-1)
+  # i skip the first comment since it is always a bot comment
   for(j in 2:anzahl_comments){
     comment = content_array$comments$comment[j]
     saetze = get_sentences(comment)
@@ -41,21 +43,22 @@ for (i in 1:n) { # gehe durch alle threads
                    finally ={setTxtProgressBar(pb, i)})
 }
 close(pb)
-#analyse knapp 1,5 Stunde gedauert
+#this loop took 7 hours
 
 ggplot(data = gme_tibble_mean[1:n,])+ 
   geom_point(mapping = aes(x = Date, y = mean, col = Count_of_Comments), show.legend = TRUE)+
   scale_color_gradient(low="red", high="green")
 
-##### Sorge dafür, dass es nur einen wert pro tag gibt ----
+##### Group means by date and weight by the number of comments per post
 gme_tibble_mean = na.omit(gme_tibble_mean)
 gme_date_discrete = select(gme_tibble_mean, - "URL") %>% group_by(Date) %>% summarise(mean = weighted.mean(x = mean, w = Count_of_Comments ), sum_com = sum(Count_of_Comments))
+sum_of_comments_usable = sum(gme_date_discrete$sum_com)
 #save data
-write.csv(gme_tibble_mean, file = "Data/gme_tibble_mean.csv")
-write.csv(gme_date_discrete, file = "Data/gme_date_discrete.csv")
+write.csv(gme_tibble_mean, file = "Data/gme_tibble_mean_first_quarter.csv")
+write.csv(gme_date_discrete, file = "Data/gme_date_discrete_first_quarter.csv")
 
 #plot
-gme_date_discrete = read_csv("Data/gme_date_discrete.csv")
+gme_date_discrete = read_csv("Data/gme_date_discrete_first_quarter.csv")
 ggplot(data = filter(gme_date_discrete))+  #, Date > "2022-02-05")
   geom_point(mapping = aes(x = Date, y = mean, col = sum_com), show.legend = TRUE)+
   scale_color_gradient(low="red", high="green") +
@@ -64,4 +67,4 @@ ggplot(data = filter(gme_date_discrete))+  #, Date > "2022-02-05")
   theme(plot.title = element_text(size = 15, face = "bold", color = "darkgrey"))
 
 
-gme_date_discrete
+
