@@ -1,4 +1,4 @@
-Predicting the stock price of GameStop using r/wallstreetbets
+Predicting the stock price of GameStop using r/wallstreetbets (Still in progress)
 ================
 
 ## Looking back to spring 2021
